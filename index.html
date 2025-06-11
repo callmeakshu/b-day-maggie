@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Bestie!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Professional color palette */
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #fffbe7 0%, #f7d9e3 100%);
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.95);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      padding: 32px 24px 48px 24px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #e6b980;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(230,185,128,0.15), 0 0 18px 2px #e74c3c55;
+      animation: photo-glow 2.5s infinite alternate;
+    }
+    @keyframes photo-glow {
+      0% { box-shadow: 0 4px 16px rgba(230,185,128,0.15), 0 0 8px 1px #e74c3c33;}
+      100% { box-shadow: 0 4px 16px rgba(230,185,128,0.15), 0 0 24px 6px #f1c40f88;}
+    }
+    h1 {
+      font-family: 'Pacifico', cursive, sans-serif;
+      color: #e6b980;
+      font-size: 2.5rem;
+      margin: 0 0 12px 0;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 2;
+    }
+    h1::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 5px;
+      margin: 8px auto 0 auto;
+      background: linear-gradient(90deg, #e6b980 0%, #e255a3 100%);
+      border-radius: 3px;
+      animation: underline-move 2.2s infinite alternate;
+    }
+    @keyframes underline-move {
+      0% { width: 60px;}
+      100% { width: 120px;}
+    }
+    .wish {
+      color: #6c3483;
+      font-size: 1.2rem;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    /* Balloons */
+    .balloon {
+      position: absolute;
+      bottom: -120px;
+      width: 60px;
+      height: 80px;
+      background: radial-gradient(circle at 60% 40%, #f7cac9 70%, #e6b980 100%);
+      border-radius: 60% 60% 60% 60% / 70% 70% 60% 60%;
+      box-shadow: 0 8px 16px rgba(230,185,128,0.18);
+      animation: float 6s linear infinite;
+      z-index: 0;
+    }
+    .balloon:nth-child(1) { left: 10%; animation-delay: 0s; background: radial-gradient(circle at 60% 40%, #f7cac9 70%, #e6b980 100%);}
+    .balloon:nth-child(2) { left: 30%; animation-delay: 2s; background: radial-gradient(circle at 60% 40%, #b5ead7 70%, #e6b980 100%);}
+    .balloon:nth-child(3) { left: 60%; animation-delay: 1s; background: radial-gradient(circle at 60% 40%, #ffdac1 70%, #e6b980 100%);}
+    .balloon:nth-child(4) { left: 80%; animation-delay: 3s; background: radial-gradient(circle at 60% 40%, #c7ceea 70%, #e6b980 100%);}
+    @keyframes float {
+      0% { transform: translateY(0) scale(1);}
+      100% { transform: translateY(-110vh) scale(1.08);}
+    }
+    .string {
+      position: absolute;
+      left: 50%;
+      top: 80px;
+      width: 2px;
+      height: 40px;
+      background: #e6b980;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    /* Gift box */
+    .giftbox {
+      margin: 32px auto 0 auto;
+      width: 80px;
+      height: 80px;
+      position: relative;
+      animation: bounce 1.5s infinite alternate;
+      cursor: pointer;
+      box-shadow: 0 0 24px 6px #e74c3c88, 0 0 0 0 #fff0;
+      transition: box-shadow 0.4s;
+    }
+    .giftbox:active {
+      box-shadow: 0 0 48px 18px #f1c40f88, 0 0 0 0 #fff0;
+    }
+    @keyframes bounce {
+      0% { transform: translateY(0);}
+      100% { transform: translateY(-12px);}
+    }
+    .box {
+      width: 80px;
+      height: 50px;
+      background: linear-gradient(160deg, #e74c3c 70%, #c0392b 100%);
+      border-radius: 0 0 12px 12px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      box-shadow: 0 8px 18px #c0392b33, 0 2px 8px #fff3;
+      border: 2px solid #b71c1c;
+      z-index: 1;
+    }
+    .lid {
+      width: 86px;
+      height: 22px;
+      background: linear-gradient(90deg, #c0392b 60%, #e74c3c 100%);
+      border-radius: 10px 10px 6px 6px;
+      position: absolute;
+      top: -12px;
+      left: -3px;
+      z-index: 3;
+      border: 2px solid #b71c1c;
+      box-shadow: 0 2px 8px #c0392b22;
+    }
+    .ribbon {
+      width: 14px;
+      height: 80px;
+      background: linear-gradient(180deg, #fff 60%, #f1c40f 100%);
+      position: absolute;
+      left: 33px;
+      top: -12px;
+      border-radius: 7px;
+      z-index: 4;
+      border: 1.5px solid #f1c40f;
+      box-shadow: 0 0 6px #fff8;
+    }
+    .bow {
+      position: absolute;
+      top: -22px;
+      left: 19px;
+      width: 42px;
+      height: 22px;
+      z-index: 5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .bow-left, .bow-right {
+      width: 18px;
+      height: 18px;
+      background: linear-gradient(135deg, #e74c3c 60%, #c0392b 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 80% 80%;
+      position: absolute;
+      top: 2px;
+    }
+    .bow-left {
+      left: 0;
+      transform: rotate(-25deg);
+      box-shadow: 0 2px 6px #c0392b44;
+    }
+    .bow-right {
+      right: 0;
+      transform: rotate(25deg);
+      box-shadow: 0 2px 6px #c0392b44;
+    }
+    /* WhatsApp chat bubble style */
+    .wa-chat-bubble {
+      position: fixed;
+      left: 50%;
+      min-width: 180px;
+      max-width: 260px;
+      background: #e1ffc7;
+      color: #222;
+      border-radius: 18px 18px 4px 18px;
+      box-shadow: 0 2px 8px #0002;
+      padding: 12px 18px;
+      font-size: 1.05rem;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      border: 1.5px solid #b2f2a5;
+      z-index: 1001;
+      opacity: 0;
+      transform: translate(-50%, 0) scale(0.9);
+      transition: opacity 0.3s, transform 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+    }
+    .wa-chat-bubble .wa-icon {
+      width: 22px;
+      height: 22px;
+      display: inline-block;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg') no-repeat center/contain;
+      flex-shrink: 0;
+    }
+    /* Add glowing effect to the gift box */
+    .giftbox {
+      /* ...existing code... */
+      box-shadow: 0 0 24px 6px #e74c3c88, 0 0 0 0 #fff0;
+      transition: box-shadow 0.4s;
+    }
+    .giftbox:active {
+      box-shadow: 0 0 48px 18px #f1c40f88, 0 0 0 0 #fff0;
+    }
+
+    /* Add sparkle animation */
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle, #fffbe7 60%, #f1c40f 100%);
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: sparkle 1.2s linear forwards;
+      z-index: 10;
+    }
+    @keyframes sparkle {
+      0% { opacity: 0.7; transform: scale(0.7);}
+      70% { opacity: 1; transform: scale(1.2);}
+      100% { opacity: 0; transform: scale(0.2);}
+    }
+
+    /* Music note animation */
+    .music-note {
+      position: fixed;
+      font-size: 1.7rem;
+      color: #6c3483;
+      opacity: 0.7;
+      pointer-events: none;
+      animation: note-float 2.2s linear forwards;
+      z-index: 1002;
+      filter: drop-shadow(0 2px 8px #6c348388);
+    }
+    @keyframes note-float {
+      0% { transform: translateY(0) scale(1);}
+      80% { opacity: 0.7;}
+      100% { transform: translateY(-120px) scale(1.3); opacity: 0;}
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container { padding: 16px 4px 32px 4px;}
+      .giftbox { width: 60px; height: 60px;}
+      .box { width: 60px; height: 38px;}
+      .lid { width: 64px; height: 16px;}
+      .ribbon { width: 8px; height: 60px; left: 26px;}
+      .bow { width: 24px; height: 12px; left: 18px;}
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Balloons (animated) -->
+  <div class="balloon"><div class="string"></div></div>
+  <div class="balloon"><div class="string"></div></div>
+  <div class="balloon"><div class="string"></div></div>
+  <div class="balloon"><div class="string"></div></div>
+
+  <div class="container">
+    <!-- Replace src with your bestie's photo -->
+    <img src="pic.jpg" alt="Bestie Photo" class="photo">
+    <h1>Happy Birthday!</h1>
+    <div class="wish" id="wishText">
+      Wishing the most amazing fabulous birthday maggie!
+      after we met this is your first birthday,<br>
+      May your day be filled with joy, laughter, and all your dreams come true. keep studying, keep eating chocolates and keep smiling always...<br>
+      <span style="color:#e6b980;">🎉🎂💖</span>
+    </div>
+    <!-- Gift box animation, now styled as a red gift box -->
+    <div class="giftbox" style="cursor:pointer;position:relative;">
+      <div class="box"></div>
+      <div class="lid"></div>
+      <div class="ribbon"></div>
+      <div class="bow">
+        <div class="bow-left"></div>
+        <div class="bow-right"></div>
+      </div>
+    </div>
+    <div style="margin-top:18px;font-size:1.1rem;color:#c0392b;font-weight:bold;letter-spacing:0.5px;">
+      click this gift box
+    </div>
+  </div>
+  <script>
+    // Optional: Add a little confetti pop when clicking the giftbox
+    document.querySelector('.giftbox').addEventListener('click', function() {
+      for(let i=0;i<30;i++) {
+        let conf = document.createElement('div');
+        conf.style.position = 'fixed';
+        conf.style.left = (window.innerWidth/2 + (Math.random()-0.5)*120) + 'px';
+        conf.style.top = (window.innerHeight/2 + 40) + 'px';
+        conf.style.width = conf.style.height = (8+Math.random()*8) + 'px';
+        conf.style.background = ['#e6b980','#f7cac9','#b5ead7','#c7ceea','#ffdac1'][Math.floor(Math.random()*5)];
+        conf.style.borderRadius = '50%';
+        conf.style.opacity = 0.85;
+        conf.style.zIndex = 999;
+        conf.style.transition = 'all 1.2s cubic-bezier(.17,.67,.83,.67)';
+        document.body.appendChild(conf);
+        setTimeout(()=>{
+          conf.style.transform = `translateY(-${120+Math.random()*120}px) translateX(${(Math.random()-0.5)*120}px) rotate(${Math.random()*360}deg)`;
+          conf.style.opacity = 0;
+        },10);
+        setTimeout(()=>conf.remove(),1400);
+      }
+    });
+
+    // Sparkle effect on giftbox click
+    document.querySelector('.giftbox').addEventListener('click', function() {
+      for(let i=0;i<8;i++) {
+        setTimeout(() => {
+          let sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+          let box = document.querySelector('.giftbox');
+          let rect = box.getBoundingClientRect();
+          sparkle.style.left = (rect.left + rect.width/2 + (Math.random()-0.5)*60) + 'px';
+          sparkle.style.top = (rect.top + rect.height/2 + (Math.random()-0.5)*40 + window.scrollY) + 'px';
+          sparkle.style.background = `radial-gradient(circle, #fffbe7 60%, ${['#f1c40f','#e255a3','#e6b980','#b5ead7'][Math.floor(Math.random()*4)]} 100%)`;
+          document.body.appendChild(sparkle);
+          setTimeout(()=>sparkle.remove(), 1200);
+        }, i*120);
+      }
+    });
+
+    // Music note animation (runs always)
+    setInterval(() => {
+      let note = document.createElement('div');
+      note.className = 'music-note';
+      note.innerText = ['🎶','🎵','🎼'][Math.floor(Math.random()*3)];
+      note.style.left = (15 + Math.random()*70) + 'vw';
+      note.style.bottom = '10px';
+      note.style.fontSize = (1.2 + Math.random()*1.2) + 'rem';
+      document.body.appendChild(note);
+      setTimeout(()=>note.remove(), 2200);
+    }, 1200);
+
+    // AI Voice for wish (continuous loop)
+    (function aiWishVoiceLoop() {
+      const wishText = "Wishing the most amazing fabulous birthday maggie! after we met this is your first birthday, May your day be filled with joy, laughter, and all your dreams come true. keep studying, keep eating chocolates and keep smiling always...";
+      function speakWish() {
+        if (!window.speechSynthesis) return;
+        // Cancel any ongoing speech to avoid overlap
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(wishText);
+        // Try to use a friendly female voice if available
+        const voices = window.speechSynthesis.getVoices();
+        utter.voice = voices.find(v => /female|woman|girl/i.test(v.name+v.voiceURI)) || voices[0];
+        utter.rate = 1;
+        utter.pitch = 1.1;
+        utter.volume = 1;
+        utter.onend = () => setTimeout(speakWish, 800); // Loop after a short pause
+        window.speechSynthesis.speak(utter);
+      }
+      // Some browsers require voices to be loaded asynchronously
+      if (window.speechSynthesis.getVoices().length === 0) {
+        window.speechSynthesis.onvoiceschanged = speakWish;
+      } else {
+        speakWish();
+      }
+    })();
+
+    // WhatsApp chat bubbles on giftbox click (spread below and above the photo)
+    document.querySelector('.giftbox').addEventListener('click', function() {
+      // Confetti effect
+      for(let i=0;i<30;i++) {
+        let conf = document.createElement('div');
+        conf.style.position = 'fixed';
+        conf.style.left = (window.innerWidth/2 + (Math.random()-0.5)*120) + 'px';
+        conf.style.top = (window.innerHeight/2 + 40) + 'px';
+        conf.style.width = conf.style.height = (8+Math.random()*8) + 'px';
+        conf.style.background = ['#e6b980','#f7cac9','#b5ead7','#c7ceea','#ffdac1'][Math.floor(Math.random()*5)];
+        conf.style.borderRadius = '50%';
+        conf.style.opacity = 0.85;
+        conf.style.zIndex = 999;
+        conf.style.transition = 'all 1.2s cubic-bezier(.17,.67,.83,.67)';
+        document.body.appendChild(conf);
+        setTimeout(()=>{
+          conf.style.transform = `translateY(-${120+Math.random()*120}px) translateX(${(Math.random()-0.5)*120}px) rotate(${Math.random()*360}deg)`;
+          conf.style.opacity = 0;
+        },10);
+        setTimeout(()=>conf.remove(),1400);
+      }
+
+      // Sparkle effect
+      for(let i=0;i<8;i++) {
+        setTimeout(() => {
+          let sparkle = document.createElement('div');
+          sparkle.className = 'sparkle';
+          let box = document.querySelector('.giftbox');
+          let rect = box.getBoundingClientRect();
+          sparkle.style.left = (rect.left + rect.width/2 + (Math.random()-0.5)*60) + 'px';
+          sparkle.style.top = (rect.top + rect.height/2 + (Math.random()-0.5)*40 + window.scrollY) + 'px';
+          sparkle.style.background = `radial-gradient(circle, #fffbe7 60%, ${['#f1c40f','#e255a3','#e6b980','#b5ead7'][Math.floor(Math.random()*4)]} 100%)`;
+          document.body.appendChild(sparkle);
+          setTimeout(()=>sparkle.remove(), 1200);
+        }, i*120);
+      }
+
+      // WhatsApp chat bubbles BELOW the gift box (as before)
+      for(let i=0;i<7;i++) {
+        setTimeout(() => {
+          let bubble = document.createElement('div');
+          bubble.className = 'wa-chat-bubble';
+          bubble.innerHTML = '<span class="wa-icon"></span> Happy birthday maggie';
+          // Randomize horizontal position
+          let left = 20 + Math.random()*60; // percent
+          bubble.style.left = left + '%';
+          // Start near the bottom (below gift box)
+          let startY = document.querySelector('.giftbox').getBoundingClientRect().bottom + window.scrollY + 20 + Math.random()*30;
+          bubble.style.top = startY + 'px';
+          document.body.appendChild(bubble);
+          // Animate in
+          setTimeout(() => {
+            bubble.style.opacity = 1;
+            bubble.style.transform = `translate(-50%, -30px) scale(1)`;
+          }, 30);
+          // Animate up and fade out
+          setTimeout(() => {
+            bubble.style.opacity = 0;
+            bubble.style.transform = `translate(-50%, -180px) scale(1.05)`;
+          }, 1800 + Math.random()*400);
+          // Remove after animation
+          setTimeout(() => bubble.remove(), 2600 + Math.random()*400);
+        }, i*220);
+      }
+
+      // WhatsApp chat bubbles ABOVE the photo
+      for(let i=0;i<7;i++) {
+        setTimeout(() => {
+          let bubble = document.createElement('div');
+          bubble.className = 'wa-chat-bubble';
+          bubble.innerHTML = '<span class="wa-icon"></span> Happy birthday maggie';
+          // Randomize horizontal position
+          let left = 20 + Math.random()*60; // percent
+          bubble.style.left = left + '%';
+          // Start above the photo
+          let photoRect = document.querySelector('.photo').getBoundingClientRect();
+          let startY = photoRect.top + window.scrollY - 50 - Math.random()*30;
+          bubble.style.top = startY + 'px';
+          document.body.appendChild(bubble);
+          // Animate in (downwards)
+          setTimeout(() => {
+            bubble.style.opacity = 1;
+            bubble.style.transform = `translate(-50%, 30px) scale(1)`;
+          }, 30);
+          // Animate down and fade out
+          setTimeout(() => {
+            bubble.style.opacity = 0;
+            bubble.style.transform = `translate(-50%, 120px) scale(1.05)`;
+          }, 1800 + Math.random()*400);
+          // Remove after animation
+          setTimeout(() => bubble.remove(), 2600 + Math.random()*400);
+        }, i*220);
+      }
+    });
+  </script>
+</body>
+</html>
